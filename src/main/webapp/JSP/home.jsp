@@ -32,7 +32,7 @@
             <a href="/DisciplinesListController">Дисциплины</a>
         </div>
         <div class="div-link ">
-            <a href="terms-list.html">Семестры</a>
+            <a href="/TermsListController">Семестры</a>
         </div>
     </div>
 </div>

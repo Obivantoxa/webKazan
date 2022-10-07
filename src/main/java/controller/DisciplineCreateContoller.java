@@ -18,8 +18,9 @@ public class DisciplineCreateContoller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         int duration = request.getIntHeader("duration");
+        byte status = 1;
         DBManager dbManager = new DBManager();
-        dbManager.createDiscipline(name,duration);
+        dbManager.createDiscipline(name,duration,status);
         response.sendRedirect("/DisciplinesListController");
 
     }

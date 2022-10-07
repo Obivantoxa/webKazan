@@ -61,7 +61,7 @@ public class DBManager implements IDBManager{
             Connection con= DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/students3","root","admin");
             Statement stmt = con.createStatement();
-            ResultSet rs= stmt.executeQuery("SELECT * FROM discipline;");
+            ResultSet rs= stmt.executeQuery("select * from discipline where status = '1'");
             while (rs.next()){
                 Disciplines disciplin = new Disciplines();
                 disciplin.setId(rs.getInt("id"));
@@ -78,18 +78,32 @@ public class DBManager implements IDBManager{
     }
 
     @Override
-    public void createDiscipline(String name, int duration) {
+    public void createDiscipline(String name, int duration,byte status) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/students3","root","admin");
             Statement stmt = con.createStatement();
-            stmt.execute("INSERT INTO `discipline` (`name`, `duration`) VALUES ('"+name+"', '"+duration+"');");
+            stmt.execute("INSERT INTO `discipline` (`name`, `duration`,`status`) VALUES ('"+name+"', '"+duration+"','"+status+"');");
 
         }catch (Exception e ) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public void deleteDiscipline(int id) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con= DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/students3","root","admin");
+            Statement stmt = con.createStatement();
+            stmt.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` = ('"+ id + "'));");
+
+        }catch (Exception e ) {
+            throw new RuntimeException(e);
+        }
     }
 
 

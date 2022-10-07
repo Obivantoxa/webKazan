@@ -11,5 +11,7 @@ public interface IDBManager {
     void createStudent(String surname, String name, String group, String date);
 
     ArrayList<Disciplines>getAllDisciplines();
-    void createDiscipline(String name,int duration);
+    void createDiscipline(String name,int duration,byte status);
+
+    void deleteDiscipline(int id);
 }
