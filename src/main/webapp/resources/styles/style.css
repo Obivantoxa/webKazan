@@ -1,0 +1,237 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    background-color: rgb(207,232,220);
+
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display:block;
+    text-align: center;
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.main-title{
+    border: 2px solid rgb(79,185,227);
+}
+
+.main-link{
+    padding-left: 10px;
+}
+
+.div-linka{
+    padding-right: 50px;
+}
+
+.div-linkaa{
+    padding-right: 30px;
+}
+
+.div-linka1{
+    padding-right: 30px;
+}
+
+.nav-and-title1{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.nav-and-title{
+    max-width: 1240px;
+    display: flex;
+}
+
+.main-conteiner{
+    margin-top: 70px;
+    position:relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.div-link {
+    text-align: center;
+    flex: 0 1 100%;
+    margin: 0 10px 10px 0;
+    border: 2px solid rgb(79,185,227);
+}
+
+.div-link  a  {
+    text-decoration: none ;
+}
+
+.table{
+    border: solid rgb(79,185,227);
+    border-spacing: 1px;
+    border-collapse: collapse;
+    width: 100%;
+    align-items: left;
+    align-content: left;
+}
+
+.header-table{
+    background-color: grey;
+}
+
+td ,th{
+    padding: 5px;
+    border: 2px solid rgb(79,185,227);
+    text-align: left;
+}
+
+.admin-student-list{
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid rgb(79,185,227);
+    width: 60%;
+    height: 70px;
+    margin-top:50px;
+}
+
+.admin-student-list-buttuns{
+    display: inline-block;
+
+    width: 60px;
+    height: 20px;
+}
+
+.admin-student-list-buttun{
+    width: 60px;
+    height: 20px;
+}
+
+.off{
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+#off{
+    background: peachpuff;
+    margin:1em;
+    margin-top:50px;
+}
+
+#ifoff{
+    line-height: 0;
+    display: flex;
+}
+
+#ifoff button{
+    width: 100%;
+    height: auto;
+}
+
+.admin-buttun {
+    background-color: peachpuff;
+
+
+    text-decoration: none;
+}
+.admin-buttun a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+}
+
+
+.set{
+    padding-top: 65px;
+    padding-left: 190px;
+}
+
+.text-field{
+    width: 249px;
+}
+
+.name-field{
+    width: 160px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.main-table{
+    margin-bottom: 60px;
+}
+
+.midle-table{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.one,
+.two,
+.buttons{
+    font-weight: bold;
+
+}
+
+.nav-and-title{
+    margin-bottom: 40px;
+}
+
+.main-conteinera{
+    margin-top: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.msa{
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.div-linka-disc{
+    padding-right: 90px;
+}
+.msas{
+    margin-left: 40px;
+    margin-top: 145px;
+    display: flex;
+    flex-direction: column;
+}
+.two ,p{
+    margin-bottom: 30px;
+}
+
+.right-tabl{
+    position: relative;
+}
+.onse{
+
+    background-color: #ffffff;
+
+}
+.name-field{
+    width: 200px;
+}
