@@ -18,7 +18,7 @@
 <header>
     <div class="container">
         <h2 class="main-title">
-            Система управления студентами и их успеваимостью
+            Система управления студентами и их успеваемостью
         </h2>
         <a class="main-link" href="\">Logout</a>
     </div>

@@ -13,17 +13,14 @@ function deleteStudents(){
     document.getElementById("deleteStudentHidden").value = ids;
     document.getElementById('deleteStudentForm').submit();
 }
-function deleteStudents(){
+function modificationStudent(){
     var checkedCheckboxs = document.querySelectorAll('input[name=idStudent]:checked')
-
-    if(checkedCheckboxs.length > 1){
-        alert("Выберите хотя бы одного студента!!!")
+    if(checkedCheckboxs.length == 0 || checkedCheckboxs.length>1){
+        alert("Выберите  одного студента!!!")
         return;
     }
     // 1-2-5-7 - string
-    var ids = ""
-
-    ids = ids.substring(0, ids.length-1);
-    document.getElementById("deleteStudentHidden").value = ids;
-    document.getElementById('deleteStudentForm').submit();
+    var id = checkedCheckboxs[0].value
+    document.getElementById("modificationStudentHidden").value = id;
+    document.getElementById('modificationStudentForm').submit();
 }

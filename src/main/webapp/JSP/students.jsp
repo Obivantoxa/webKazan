@@ -44,10 +44,14 @@
         <button class="admin-buttun"><a href="/create-student">Создать студента</a></button>
     </div>
     <div class="row">
-        <button class="admin-buttun"><a href="modif-student.html">Модифицировать выбранного студента</a></button>
-        <button class="admin-buttun">
-            <input type="submit" onclick="deleteStudents()"
-                   value="Удалитьвыбранных студентов "></button>
+
+            <input class="admin-buttun" type="submit" onclick="modificationStudent()"
+                   value="Модифицировать выбранного студента" class="button">
+
+
+            <input class="admin-buttun" type="submit" onclick="deleteStudents()"
+                   value="Удалитьвыбранных студентов ">
+
     </div>
 </div>
 
@@ -69,7 +73,7 @@
                     <th>${st.surname}</th>
                     <th>${st.name}</th>
                     <th>${st.group}</th>
-                    <th><fmt:formatDate value="${st.date}" pattern="MM/dd/yyyy"></fmt:formatDate> </th>
+                    <th><fmt:formatDate value="${st.date}" pattern="dd/MM/yyyy"></fmt:formatDate> </th>
                 </tr>
             </c:forEach>
 
@@ -81,6 +85,10 @@
 </body>
 <form id ="deleteStudentForm" action="/StudentDeleteController" method="post">
     <input type="hidden" id = "deleteStudentHidden" name="deleteStudentHidden">
+</form>
+
+<form id ="modificationStudentForm" action="/StudentModificController" method="get">
+    <input type="hidden" id = "modificationStudentHidden" name="modificationStudentHidden">
 </form>
 </html>
 

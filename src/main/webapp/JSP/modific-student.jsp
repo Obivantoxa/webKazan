@@ -36,30 +36,30 @@
 <div class="nav-and-title">
     <a class="div-linka" href="/home">На главную</a>
     <a class="div-linkaa" href="/student">Назад</a>
-    <h2>Для создания студента нажмите кнопку "Создать".</h2>
+    <h2>Для модификации студента нажмите кнопку "Создать".</h2>
 </div>
 <div class="form">
     <div class="set">
-        <form action="/create-student" method="post">
+        <form action="/StudentModificController" method="post">
             <label class="name-field" for="surname">Фамилия</label>
-            <input class="text-field" id="surname" name="surname" value="${surname}"> <br> <br>
+            <input class="text-field" id="surname" name="surname" value="${student.surname}"> <br> <br>
             <label class="name-field" for="name">Имя</label>
-            <input class="text-field" id="name" name="name" value="${name}"><br> <br>
+            <input class="text-field" id="name" name="name" value="${student.name}"><br> <br>
             <label class="name-field" for="surname">Группа</label>
-            <input class="text-field" id="surname" name="group" value="${group}"> <br> <br>
+            <input class="text-field" id="surname" name="group" value="${student.group}"> <br> <br>
             <label class="name-field" for="name">Дата поступления</label>
-            <input class="text-field" id="datepicker" name="date" value="${dateFromUser}"><br> <br>
-            <input type="submit" value="Создать">
-            <input type="hidden" name ="id="${student.id}">
+            <input class="text-field" id="datepicker" name="date" value="${student.date}"><br> <br>
+            <input type="submit" value="Модифицировать" onclick="modificationStudents()">
+            <input type="hidden" name="id" value="${student.id}">
         </form>
     </div>
 </div>
 <div class="set">
     <d:if test="${error == 1}">
-    <h2>
-        Поля не должны быть пустыми
-    </h2>
-</d:if>
+        <h2>
+            Поля не должны быть пустыми
+        </h2>
+    </d:if>
 
 </div>
 
