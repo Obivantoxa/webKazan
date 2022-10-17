@@ -13,14 +13,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students list</title>
     <link rel="stylesheet" href="../resources/styles/style.css">
+    <script src="../resources/js/functions.js">
+    </script>
 
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </head>
 <body>
 <header>
     <div class="container">
         <h2 class="main-title">
-            Система управления студентами и их успеваимостью
+            Система управления студентами и их успеваемостью
         </h2>
         <a class="main-link" href="\">Logout</a>
     </div>
@@ -42,7 +45,9 @@
     </div>
     <div class="row">
         <button class="admin-buttun"><a href="modif-student.html">Модифицировать выбранного студента</a></button>
-        <button class="admin-buttun">Удалить выбранных студентов</button>
+        <button class="admin-buttun">
+            <input type="submit" onclick="deleteStudents()"
+                   value="Удалитьвыбранных студентов "></button>
     </div>
 </div>
 
@@ -59,12 +64,12 @@
             </tr>
             <c:forEach items="${studentsList}" var="st">
                 <tr>
-                    <th><input type="checkbox" checked="">
+                    <th><input name="idStudent" type="checkbox" value ="${st.id}" >
                         <label for=""></label></th>
                     <th>${st.surname}</th>
                     <th>${st.name}</th>
                     <th>${st.group}</th>
-                    <th>${st.date}</th>
+                    <th><fmt:formatDate value="${st.date}" pattern="MM/dd/yyyy"></fmt:formatDate> </th>
                 </tr>
             </c:forEach>
 
@@ -74,6 +79,9 @@
 
 
 </body>
+<form id ="deleteStudentForm" action="/StudentDeleteController" method="post">
+    <input type="hidden" id = "deleteStudentHidden" name="deleteStudentHidden">
+</form>
 </html>
 
 

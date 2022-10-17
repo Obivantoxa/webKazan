@@ -14,4 +14,6 @@ public interface IDBManager {
     void createDiscipline(String name,int duration,byte status);
 
     void deleteDiscipline(int id);
+
+    void deleteStudents(String ids);
 }

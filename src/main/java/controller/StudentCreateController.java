@@ -6,6 +6,12 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 @WebServlet(name = "StudentCreateController", value = "/create-student")
 public class StudentCreateController extends HttpServlet {
@@ -20,10 +26,19 @@ public class StudentCreateController extends HttpServlet {
         String surname = request.getParameter("surname");
         String name = request.getParameter("name");
         String group = request.getParameter("group");
-        String date = request.getParameter("date");
+        String dateFromUser = request.getParameter("date");
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+        Date date = null;
+        try {
+            date = format.parse(dateFromUser);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        Format formatter =new SimpleDateFormat("yyyy-MM-dd");
+        String dateToBd = formatter.format(date);
         //2)БД
         DBManager manager = new DBManager();
-        manager.createStudent(surname,name,group,date);
+        manager.createStudent(surname,name,group,dateToBd);
 
         //3 вернуться на нач страницу ,ссылка берется из контроллера  "value=/student"
         response.sendRedirect("/student");

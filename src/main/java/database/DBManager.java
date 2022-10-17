@@ -1,5 +1,6 @@
 package database;
 
+import constants.Constat;
 import entity.Disciplines;
 import entity.Students;
 
@@ -16,9 +17,9 @@ public class DBManager implements IDBManager{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/students3","root","admin");
+                    Constat.CONNECTION_URL_DB,Constat.CONNECTION_LOGIN_DB,Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
-            ResultSet rs= stmt.executeQuery("select * from students;");
+            ResultSet rs= stmt.executeQuery("select * from students where status = 1 ;");
             while (rs.next()){
                 Students student = new Students();
                 student.setId(rs.getInt("id"));
@@ -42,7 +43,7 @@ public class DBManager implements IDBManager{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/students3","root","admin");
+                    Constat.CONNECTION_URL_DB,Constat.CONNECTION_LOGIN_DB,Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
             stmt.execute("INSERT INTO `students` ( `name`, `surname`, `group`, `date`, `status`)\n" +
                     "VALUES ('"+name+"', '"+surname+"', '"+group+"', '"+date+"', '1');");
@@ -59,9 +60,9 @@ public class DBManager implements IDBManager{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/students3","root","admin");
+                    Constat.CONNECTION_URL_DB,Constat.CONNECTION_LOGIN_DB,Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
-            ResultSet rs= stmt.executeQuery("select * from discipline where status = '1'");
+            ResultSet rs= stmt.executeQuery("select * from discipline where status = 1");
             while (rs.next()){
                 Disciplines disciplin = new Disciplines();
                 disciplin.setId(rs.getInt("id"));
@@ -82,7 +83,7 @@ public class DBManager implements IDBManager{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/students3","root","admin");
+                    Constat.CONNECTION_URL_DB,Constat.CONNECTION_LOGIN_DB,Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
             stmt.execute("INSERT INTO `discipline` (`name`, `duration`,`status`) VALUES ('"+name+"', '"+duration+"','"+status+"');");
 
@@ -97,9 +98,23 @@ public class DBManager implements IDBManager{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/students3","root","admin");
+                    Constat.CONNECTION_URL_DB,Constat.CONNECTION_LOGIN_DB,Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
             stmt.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` = ('"+ id + "'));");
+
+        }catch (Exception e ) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteStudents(String ids) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con= DriverManager.getConnection(
+                    Constat.CONNECTION_URL_DB,Constat.CONNECTION_LOGIN_DB,Constat.CONNECTION_PASSWORD_DB);
+            Statement stmt = con.createStatement();
+            stmt.execute("UPDATE `students` SET `status` = '0' WHERE (`id` in ("+ids+"));");
 
         }catch (Exception e ) {
             throw new RuntimeException(e);
