@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../resources/styles/style.css">
     <script src="../resources/js/functions.js">
     </script>
-
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </head>

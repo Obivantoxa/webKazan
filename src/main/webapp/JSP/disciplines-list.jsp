@@ -13,7 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>disciplines-list</title>
     <link rel="stylesheet" href="../resources/styles/style.css">
+    <script src="../resources/js/functions.js">
+    </script>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 </head>
 <body>
 <header>
@@ -43,7 +46,7 @@
             <c:forEach items="${allDisciplines}" var="st">
                 <tr>
                     <th>
-                        <input type="checkbox" checked="">
+                        <input name="idDisciplines" type="checkbox" value ="${st.id}" >
                         <label for="">
                         </label>
                     </th>
@@ -61,13 +64,15 @@
         <button class="admin-buttun">
             <a href="modif-discipline.html">Модифицировать выбранную дисциплину</a>
         </button>
-        <button class="admin-buttun">
-            <a href="modif-student.html">Удалить выбранную дисциплину</a>
-        </button>
+
+        <input class="admin-buttun" type="submit" onclick="deleteDisciplines()"
+               value="Удалить выбранную дисциплину">
 
     </div>
 </div>
 
-
 </body>
+<form id ="deleteDisciplinesForm" action="/DisciplineDeleteController" method="post">
+    <input type="hidden" id = "deleteDisciplinesHidden" name="deleteDisciplinesHidden">
+</form>
 </html>

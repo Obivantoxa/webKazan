@@ -133,13 +133,13 @@ public class DBManager implements IDBManager {
     }
 
     @Override
-    public void deleteDiscipline(int id) {
+    public void deleteDiscipline(String ids) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     Constat.CONNECTION_URL_DB, Constat.CONNECTION_LOGIN_DB, Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
-            stmt.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` = ('" + id + "'));");
+            stmt.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` in (" + ids + "));");
             //UPDATE `students` SET `status` = '1' WHERE (`id` = '8');
         } catch (Exception e) {
             throw new RuntimeException(e);

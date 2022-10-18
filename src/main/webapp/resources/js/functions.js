@@ -24,3 +24,18 @@ function modificationStudent(){
     document.getElementById("modificationStudentHidden").value = id;
     document.getElementById('modificationStudentForm').submit();
 }
+function deleteDisciplines(){
+    var checkedCheckboxs = document.querySelectorAll('input[name=idDisciplines]:checked')
+    if(checkedCheckboxs.length == 0){
+        alert("Выберите хотя бы одну Дисциплину!!!")
+        return;
+    }
+    // 1-2-5-7 - string
+    var ids = ""
+    for(var i = 0; i < checkedCheckboxs.length; i++){
+        ids = ids + checkedCheckboxs[i].value + ",";
+    }
+    ids = ids.substring(0, ids.length-1);
+    document.getElementById("deleteDisciplinesHidden").value = ids;
+    document.getElementById('deleteDisciplinesForm').submit();
+}
