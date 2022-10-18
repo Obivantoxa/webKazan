@@ -60,7 +60,7 @@ public class StudentModificController extends HttpServlet {
         String dateToBd = formatter.format(date);
         //2)БД
         DBManager manager = new DBManager();
-        manager.updateStudent(surname, name, group, dateToBd);
+        manager.updateStudent(id,surname, name, group, dateToBd);
 
         //3 вернуться на нач страницу ,ссылка берется из контроллера  "value=/student"
         response.sendRedirect("/student");

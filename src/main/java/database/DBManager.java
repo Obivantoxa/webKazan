@@ -80,13 +80,13 @@ public class DBManager implements IDBManager {
     }
 
     @Override
-    public void updateStudent(String surname, String name, String group, String date) {
+    public void updateStudent(String id,String surname, String name, String group, String date) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     Constat.CONNECTION_URL_DB, Constat.CONNECTION_LOGIN_DB, Constat.CONNECTION_PASSWORD_DB);
             Statement stmt = con.createStatement();
-            stmt.execute("UPDATE `students` SET `name` = '"+name+"', `surname` = '"+surname+"', `group` = '"+group+"', `date` = '"+date+"' WHERE (`id` = '7');");
+            stmt.execute("UPDATE `students` SET `name` = '"+name+"', `surname` = '"+surname+"', `group` = '"+group+"', `date` = '"+date+"' WHERE (`id` = '"+id+"');");
 
         } catch (Exception e) {
             throw new RuntimeException(e);

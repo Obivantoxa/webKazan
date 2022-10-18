@@ -11,7 +11,7 @@ public interface IDBManager {
     Students getModificStudents(int id );
 
     void createStudent(String surname, String name, String group, String date);
-    void updateStudent(String surname, String name, String group, String date);
+    void updateStudent( String id, String surname, String name, String group, String date);
 
     ArrayList<Disciplines>getAllDisciplines();
     void createDiscipline(String name,int duration,byte status);
