@@ -12,13 +12,13 @@ public class DisciplineDeleteController extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ids = request.getParameter("deleteDisciplineHidden");
+        String ids = request.getParameter("deleteDisciplinesHidden");
 
         //2)БД
         DBManager manager = new DBManager();
         manager.deleteDiscipline(ids);
 
         //3 вернуться на нач страницу ,ссылка берется из контроллера  "value=/student"
-        response.sendRedirect("/disciplines-list");
+        response.sendRedirect("/DisciplinesListController");
     }
 }
