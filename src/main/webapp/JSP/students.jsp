@@ -1,11 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Nekr
-  Date: 001 01.10.22
-  Time: 15:50
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +12,6 @@
     <link rel="stylesheet" href="../resources/styles/style.css">
     <script src="../resources/js/functions.js">
     </script>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </head>
 <body>
 <header>
@@ -38,7 +33,9 @@
     <div class="col" id="ifoff"></div>
     <div class="row">
         <button class="admin-buttun">
-            <a href="students-progress.html">Посмотреть успеваемость выбранного студента</a>
+            <input class="admin-buttun" type="submit" onclick="progresStudent()"
+                   value="Посмотреть успеваемость выбранного студента" class="button">
+
         </button>
         <button class="admin-buttun"><a href="/create-student">Создать студента</a></button>
     </div>
@@ -89,6 +86,12 @@
 <form id ="modificationStudentForm" action="/StudentModificController" method="get">
     <input type="hidden" id = "modificationStudentHidden" name="modificationStudentHidden">
 </form>
+
+<form id ="progresStudentForm" action="/student-progress" method="get">
+    <input type="hidden" id = "progresStudentHidden" name="progresStudentHidden">
+</form>
+
+
 </html>
 
 

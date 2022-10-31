@@ -39,3 +39,17 @@ function deleteDisciplines(){
     document.getElementById("deleteDisciplinesHidden").value = ids;
     document.getElementById('deleteDisciplinesForm').submit();
 }
+
+
+function progresStudent(){
+    var checkedCheckboxs = document.querySelectorAll('input[name=idStudent]:checked')
+    if(checkedCheckboxs.length == 0 || checkedCheckboxs.length>1){
+        alert("Выберите  одного студента!!!")
+        return;
+    }
+    // 1-2-5-7 - string
+    var id = checkedCheckboxs[0].value
+    document.getElementById("progresStudentHidden").value = id;
+    document.getElementById('progresStudentForm').submit();
+}
+

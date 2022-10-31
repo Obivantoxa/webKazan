@@ -36,7 +36,7 @@
 <div class="nav-and-title">
     <a class="div-linka" href="/home">На главную</a>
     <a class="div-linkaa" href="/student">Назад</a>
-    <h2>Для модификации студента нажмите кнопку "Создать".</h2>
+    <h2>Для модификации студента нажмите кнопку "Модифицировать".</h2>
 </div>
 <div class="form">
     <div class="set">
