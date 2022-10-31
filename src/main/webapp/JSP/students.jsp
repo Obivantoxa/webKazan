@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -32,21 +31,20 @@
 
     <div class="col" id="ifoff"></div>
     <div class="row">
-        <button class="admin-buttun">
-            <input class="admin-buttun" type="submit" onclick="progresStudent()"
-                   value="Посмотреть успеваемость выбранного студента" class="button">
 
-        </button>
+        <input class="admin-buttun" type="submit" onclick="progresStudent()"
+               value="Посмотреть успеваемость выбранного студента" class="button">
+
         <button class="admin-buttun"><a href="/create-student">Создать студента</a></button>
     </div>
     <div class="row">
 
-            <input class="admin-buttun" type="submit" onclick="modificationStudent()"
-                   value="Модифицировать выбранного студента" class="button">
+        <input class="admin-buttun" type="submit" onclick="modificationStudent()"
+               value="Модифицировать выбранного студента" class="button">
 
 
-            <input class="admin-buttun" type="submit" onclick="deleteStudents()"
-                   value="Удалитьвыбранных студентов ">
+        <input class="admin-buttun" type="submit" onclick="deleteStudents()"
+               value="Удалитьвыбранных студентов ">
 
     </div>
 </div>
@@ -64,12 +62,12 @@
             </tr>
             <c:forEach items="${studentsList}" var="st">
                 <tr>
-                    <th><input name="idStudent" type="checkbox" value ="${st.id}" >
+                    <th><input name="idStudent" type="checkbox" value="${st.id}">
                         <label for=""></label></th>
                     <th>${st.surname}</th>
                     <th>${st.name}</th>
                     <th>${st.group}</th>
-                    <th><fmt:formatDate value="${st.date}" pattern="dd/MM/yyyy"></fmt:formatDate> </th>
+                    <th><fmt:formatDate value="${st.date}" pattern="dd/MM/yyyy"></fmt:formatDate></th>
                 </tr>
             </c:forEach>
 
@@ -79,16 +77,16 @@
 
 
 </body>
-<form id ="deleteStudentForm" action="/StudentDeleteController" method="post">
-    <input type="hidden" id = "deleteStudentHidden" name="deleteStudentHidden">
+<form id="deleteStudentForm" action="/StudentDeleteController" method="post">
+    <input type="hidden" id="deleteStudentHidden" name="deleteStudentHidden">
 </form>
 
-<form id ="modificationStudentForm" action="/StudentModificController" method="get">
-    <input type="hidden" id = "modificationStudentHidden" name="modificationStudentHidden">
+<form id="modificationStudentForm" action="/StudentModificController" method="get">
+    <input type="hidden" id="modificationStudentHidden" name="modificationStudentHidden">
 </form>
 
-<form id ="progresStudentForm" action="/student-progress" method="get">
-    <input type="hidden" id = "progresStudentHidden" name="progresStudentHidden">
+<form id="progresStudentForm" action="/student-progress" method="get">
+    <input type="hidden" id="progresStudentHidden" name="progresStudentHidden">
 </form>
 
 

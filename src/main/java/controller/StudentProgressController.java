@@ -4,6 +4,7 @@ import database.DBManager;
 import entity.DisciplinesMark;
 import entity.Students;
 import entity.Term;
+import service.Services;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -30,27 +31,27 @@ public class StudentProgressController extends HttpServlet {
         ArrayList<Term> allTerms = manager.getAllTerms();
         //3 select * from term where status = 1 order by name сортированный
         Term firstTerm = null;
-        if (request.getParameter("idTerm").isEmpty()){
-            allTerms.get(0);// установить по дефолту первый семестр
+        if (request.getParameter("term") == null){
+            firstTerm= allTerms.get(0);// установить по дефолту первый семестр
         }else {
-           // firstTerm = request.getParameter("idTerm");
+            //firstTerm.setId(Integer.parseInt(request.getParameter("idTerm")));
+            firstTerm = Services.getTermById(allTerms,request.getParameter("term"));
         }
 
         //4
         ArrayList<DisciplinesMark> allDisciplinesMark = manager.getAllDisciplinesMark(student, firstTerm);
+        double aMark = Services.getAverageMark(allDisciplinesMark);
+
         //6
         request.setAttribute("student",student);
         request.setAttribute("allTerms",allTerms);
         request.setAttribute("firstTerm",firstTerm);
         request.setAttribute("allDisciplinesMark",allDisciplinesMark);
+        request.setAttribute("aMark",aMark);
         request.getRequestDispatcher("JSP/student-progress.jsp").forward(request,response);
 
 
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }

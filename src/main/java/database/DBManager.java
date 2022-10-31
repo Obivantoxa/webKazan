@@ -1,10 +1,7 @@
 package database;
 
 import constants.Constat;
-import entity.Disciplines;
-import entity.DisciplinesMark;
-import entity.Students;
-import entity.Term;
+import entity.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -224,8 +221,8 @@ public class DBManager implements IDBManager {
                     "left join term_discipline td on td.id_discipline = d.id\n" +
                     "left join student_term_discipline_mark stdm on stdm.id_term_discipline = td.id\n" +
                     "left join mark m on m.id = stdm.id_mark \n" +
-                    "where td.id_term = "+t.getId()+" \n" +
-                    "and (stdm.id_student = "+s.getId()+" or stdm.id_student is null)");
+                    "where td.id_term = " + t.getId() + " \n" +
+                    "and (stdm.id_student = " + s.getId() + " or stdm.id_student is null)");
             while (rs.next()) {
                 DisciplinesMark disciplinesMark = new DisciplinesMark();
                 disciplinesMark.setId(rs.getInt("id"));
@@ -237,6 +234,46 @@ public class DBManager implements IDBManager {
             throw new RuntimeException(e);
         }
         return dm;
+    }
+
+    @Override
+    public ArrayList<Role> getAllRoles() {
+        ArrayList<Role> roles = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    Constat.CONNECTION_URL_DB, Constat.CONNECTION_LOGIN_DB, Constat.CONNECTION_PASSWORD_DB);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from role order by id");
+            while (rs.next()) {
+                Role role = new Role();
+                role.setId(rs.getInt("id"));
+                role.setName(rs.getString("name"));
+                roles.add(role);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return roles;
+    }
+
+    @Override
+    public boolean chekLogin(String login, String password, String role) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    Constat.CONNECTION_URL_DB, Constat.CONNECTION_LOGIN_DB, Constat.CONNECTION_PASSWORD_DB);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from user u\n" +
+                    "join user_role ur on ur.user_id = u.id\n" +
+                    "where login = '" + login + "' and password = '" + password + "' and role_id = " + role);
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 
 

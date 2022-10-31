@@ -1,9 +1,6 @@
 package database;
 
-import entity.Disciplines;
-import entity.DisciplinesMark;
-import entity.Students;
-import entity.Term;
+import entity.*;
 
 import java.util.ArrayList;
 
@@ -30,4 +27,7 @@ public interface IDBManager {
     ArrayList<Term> getAllTerms();
     ArrayList<DisciplinesMark> getAllDisciplinesMark(Students s, Term t);
 
+    ArrayList<Role> getAllRoles();
+
+    boolean chekLogin (String login, String password, String role);
 }

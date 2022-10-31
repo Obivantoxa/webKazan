@@ -22,8 +22,8 @@
     </div>
 </header>
 <div class="nav-and-title">
-    <a class="div-linka" href="title page.html">На главную</a>
-    <a class="div-linkaa" href="students-list.html">Назад</a>
+    <a class="div-linka" href="/home">На главную</a>
+    <a class="div-linkaa" href="/student">Назад</a>
     <h2>Отображена успеваемость для следующего студента:</h2>
 </div>
 
@@ -42,7 +42,7 @@
                     <th>${student.surname}</th>
                     <th>${student.name}</th>
                     <th>${student.group}</th>
-                    <th><fmt:formatDate value="${st.date}" pattern="dd/MM/yyyy"></fmt:formatDate> </th>
+                    <th><fmt:formatDate value="${student.date}" pattern="dd/MM/yyyy"></fmt:formatDate> </th>
                 </tr>
 
         </table>
@@ -69,6 +69,7 @@
 
                     <p class="one">
                         <label for="term">Выберите семестр</label> &nbsp;
+                        <input type="hidden" name ="progresStudentHidden" value="${student.id}">
                         <select class="one" name="term" id="term">&nbsp;
                             <c:forEach items="${allTerms}" var="t">
                                 <option value="${t.id}"
@@ -81,7 +82,9 @@
                         <input class="buttons" type="submit" value="Выбрать">
                     </p>
                     <br>
-                    <p class="two"> Средняя оценка за семестр 4.8 балла</p>
+                    <p class="two"> Средняя оценка за семестр <fmt:formatNumber type = "number" maxIntegerDigits = "3" value = "${aMark}" /> баллa
+
+                    </p>
                 </form>
 
         </div>
