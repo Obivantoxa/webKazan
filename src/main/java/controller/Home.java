@@ -12,16 +12,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "home", value = "")
+@WebServlet(name = "home", value = "/home")
 public class Home extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Object isLogin = (String) req.getSession().getAttribute("isLogin");
-        if (isLogin!= null && ((String)isLogin).equals("1"))
-        req.getRequestDispatcher("index.jsp").forward(req,resp);
+        Integer isLogin = (Integer) req.getSession().getAttribute("isLogin");
+        //Integer i = (Integer) isLogin;
+        if (isLogin != null &&  isLogin == 1)
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
         else {
-           resp.sendRedirect("/login");
+            resp.sendRedirect("/login");
         }
     }
 }

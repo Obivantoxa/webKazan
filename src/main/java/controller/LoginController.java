@@ -26,11 +26,12 @@ public class LoginController extends HttpServlet {
         DBManager manager = new DBManager();
         ArrayList<Role> allRoles = manager.getAllRoles();
         req.setAttribute("allRoles", allRoles);
+
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         String role = req.getParameter("role");
         if (login.isEmpty()|| password.isEmpty() || role.isEmpty() ) {
-            req.setAttribute("error", "1");
+            req.setAttribute("Error", "1");
             req.getRequestDispatcher("JSP/login.jsp").forward(req, resp);
             return;
         }
@@ -43,7 +44,7 @@ public class LoginController extends HttpServlet {
             resp.sendRedirect("/home");
         }
         else {
-            req.setAttribute("error",1);
+            req.setAttribute("ErrorLogin",1);
             req.getRequestDispatcher("JSP/login.jsp").forward(req,resp);
 
 
