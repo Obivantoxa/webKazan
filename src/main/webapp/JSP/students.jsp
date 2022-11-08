@@ -18,12 +18,29 @@
         <h2 class="main-title">
             Система управления студентами и их успеваемостью
         </h2>
-        <a class="main-link" href="\">Logout</a>
+        <p>${login}</p>
+        &nbsp;
+        &nbsp;
+        <p>
+            <c:choose>
+                <c:when test="${role eq 1 }">Администратор</c:when>
+                <c:when test="${role eq 3 }">Преподаватель</c:when>
+                <c:otherwise>Студент</c:otherwise>
+            </c:choose>
+        </p>
+        <c:choose>
+            <c:when test="${isLogin eq 1 }">
+                <a class="main-link" href="/logout">Logout</a>
+            </c:when>
+            <c:otherwise>
+                <a class="main-link" href="/login">Login</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </header>
 <div class="nav-and-title1">
 
-    <a class="div-linkaa1" href="/home">Назад</a>
+    <a class="div-linkaa1" href="/">Назад</a>
 
 </div>
 
@@ -31,21 +48,23 @@
 
     <div class="col" id="ifoff"></div>
     <div class="row">
-
         <input class="admin-buttun" type="submit" onclick="progresStudent()"
                value="Посмотреть успеваемость выбранного студента" class="button">
-
-        <button class="admin-buttun"><a href="/create-student">Создать студента</a></button>
+        <c:choose>
+            <c:when test="${role eq 1 or role eq  3}">
+                <button class="admin-buttun"><a href="/create-student">Создать студента</a></button>
+            </c:when>
+        </c:choose>
     </div>
     <div class="row">
-
-        <input class="admin-buttun" type="submit" onclick="modificationStudent()"
-               value="Модифицировать выбранного студента" class="button">
-
-
-        <input class="admin-buttun" type="submit" onclick="deleteStudents()"
-               value="Удалитьвыбранных студентов ">
-
+        <c:choose>
+            <c:when test="${role eq 1 or role eq  3}">
+                <input class="admin-buttun" type="submit" onclick="modificationStudent()"
+                       value="Модифицировать выбранного студента" class="button">
+                <input class="admin-buttun" type="submit" onclick="deleteStudents()"
+                       value="Удалитьвыбранных студентов ">
+            </c:when>
+        </c:choose>
     </div>
 </div>
 

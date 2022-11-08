@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +21,28 @@
         <h2 class="main-title">
             Система управления студентами и их успеваемостью
         </h2>
-        <a class="main-link" href="\">Logout</a>
+        <p>${login}</p>
+        &nbsp;
+        &nbsp;
+        <p>
+            <c:choose>
+                <c:when test="${role eq 1 }">Администратор</c:when>
+                <c:when test="${role eq 3 }">Преподаватель</c:when>
+                <c:otherwise>Студент</c:otherwise>
+            </c:choose>
+        </p>
+        <c:choose>
+            <c:when test="${isLogin eq 1 }">
+                <a class="main-link" href="/logout">Logout</a>
+            </c:when>
+            <c:otherwise>
+                <a class="main-link" href="/login">Login</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </header>
 <div class="nav-and-title">
-    <a class="div-linka" href="/home">На главную</a>
+    <a class="div-linka" href="/">На главную</a>
     <a class="div-linkaa" href="/DisciplinesListController">Назад</a>
     <h2>Для того чтобы создать новую дисциплину заполните все поля и нажмите кнопку "Создать".</h2>
 </div>

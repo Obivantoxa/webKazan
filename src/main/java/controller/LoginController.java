@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
             req.getSession().setAttribute("isLogin",1);
             req.getSession().setAttribute("login",login);
             req.getSession().setAttribute("role",role); // параметры нужны что б
-            resp.sendRedirect("/home");
+            resp.sendRedirect("/");
         }
         else {
             req.setAttribute("ErrorLogin",1);
